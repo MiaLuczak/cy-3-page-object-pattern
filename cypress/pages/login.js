@@ -12,27 +12,13 @@ export class Login {
   }
 
   // Login method
-  typeLoginCredentials(fixtureName) {
-    cy.fixture(fixtureName)
-      .as(loginCredentials)
-      .then(() => {
-        // Trying parse JSON fixtures to JS object
-        try {
-          JSON.parse(loginCredentials);
-        } catch {
-          // If there's problem with JSON returning invalid loginCredentials object
-          return (loginCredentials = {
-            login: 'Invalid login Credentials',
-            password: '',
-          });
-        }
-      });
+  typeLoginCredentials(loginCredential, passwordCredential) {
     // Getting access to email form textbox, typing and validating login
-    cy.get('#user_email').type(loginCredentials.login);
-    cy.get('#user_email').should('have.value', loginCredentials.login);
+    cy.get('#user_email').type(loginCredential);
+    cy.get('#user_email').should('have.value', loginCredential);
     // Getting access to password form textbox, typing and validating password
-    cy.get('#user_password').type(loginCredentials.password);
-    cy.get('#user_password').should('have.value', loginCredentials.password);
+    cy.get('#user_password').type(passwordCredential);
+    cy.get('#user_password').should('have.value', passwordCredential);
   }
 
   // Subbmiting login data, and logging in
