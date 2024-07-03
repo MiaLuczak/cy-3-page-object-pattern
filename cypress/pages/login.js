@@ -1,4 +1,4 @@
-export class login {
+export class Login {
   // Mavigating to destination page
   navigate() {
     cy.visit('https://www.edu.goit.global/account/login');
